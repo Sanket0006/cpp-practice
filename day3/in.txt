@@ -1,0 +1,7 @@
+6
+add 5
+add 9
+add 2
+treat
+add 7
+treat

@@ -12,14 +12,19 @@ int main(void) {
         cin >> x;
     }
 
-    int best = 0, L = 0, R = 0;
-    int sum = 0;
-    while (L < n || R < n) {
-        if (sum >= 0) sum += arr[++R];
-        else sum -= arr[L++];
-        best = max(best, R-L+1);
+    long long sum = 0;
+    priority_queue<int, vector<int>, greater<int>> pq;
+
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+        pq.push(arr[i]);
+        if (sum < 0) {
+            sum -= pq.top();
+            pq.pop();
+        }
     }
 
-    cout << best << '\n';
+
+    cout << pq.size() << '\n';
 
 }
